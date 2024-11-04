@@ -1,0 +1,355 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+
+/* ****************** Header Styling ************************************** */
+
+/* .header {
+  position: fixed;
+} */
+
+.header-info {
+  position: relative;
+  background-color: #5022c3;
+  text-align: center;
+  padding: 0.1rem 0.1rem;
+}
+
+.header-info-hidden {
+  display: none;
+}
+
+.header-info p {
+  color: whitesmoke;
+}
+
+.header-info p a {
+  color: inherit;
+}
+
+.header-info p a:hover {
+  color: rgb(229, 226, 226);
+}
+
+.header-info button {
+  position: absolute;
+  top: 15px;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  box-shadow: 1px 1px;
+}
+
+.nav-logo-cat {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav input {
+  width: 400px;
+  padding: 0.3rem 0.3rem;
+  outline: none;
+  border: 1.1px solid black;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  font-size: medium;
+}
+
+nav input:focus {
+  border: 1.5px solid #5022c3 !important;
+}
+
+nav input::placeholder {
+  color: grey;
+  opacity: 0.8;
+  font-weight: 200;
+  font-size: small;
+}
+
+.dropdown select {
+  background-color: transparent;
+  outline: none; /* Remove the outline */
+  border: none; /* Remove the default border */
+  padding: 0.3rem; /* Add padding if necessary */
+  border-radius: 10px; /* Optional: to match your design */
+  /* font-size: 0.8em; */
+}
+
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cart h3 span {
+  font-weight: smaller;
+}
+
+.cart-list {
+  display: none;
+}
+
+.cart-display {
+  display: block;
+  position: absolute; /* Position it below the cart title */
+  top: 35px;
+  background-color: white; /* Background for dropdown */
+  border: 1px solid #ccc; /* Optional: border around dropdown */
+  border-radius: 5px; /* Optional: rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for dropdown */
+  z-index: 1000;
+  width: 200px;
+  padding-left: 0px;
+  list-style: none;
+}
+
+.cart-display li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem 0.5rem 0.3rem;
+}
+
+.cart-display li:not(:last-child) {
+  border-bottom: 0.05px solid black;
+  padding: 0.3rem 0.4rem 0.5rem 0.3rem;
+}
+
+.wishlist-logo {
+  align-self: center;
+  width: 30px;
+}
+
+.notification-logo {
+  align-self: center;
+  width: 30px;
+}
+
+.profile-logo {
+  align-self: center;
+  width: 40px;
+  aspect-ratio: 1/1;
+}
+
+img {
+  width: 30px;
+}
+
+/* ************** Main ************************** */
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  overflow-y: auto;
+}
+
+.main-div {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: transform 0.5s ease-out;
+}
+
+.main-div:hover {
+  transform: translateY(-8px);
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.poster-image {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border: 0.1px solid grey;
+}
+
+.poster-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0.1rem;
+  margin: 0.5rem 0.05rem 0rem 0rem;
+}
+
+.poster-info h3 {
+  margin: 0;
+  /* white-space: nowrap; Prevents the text from wrapping onto the next line */
+  overflow: hidden; /* Hides any overflowed content */
+  text-overflow: ellipsis; /* Adds an ellipsis (…) if the text is too long to fit */
+}
+
+.poster-instructor {
+  color: rgb(70, 70, 70);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  opacity: 0.8;
+}
+
+.poster-description {
+  color: rgb(39, 36, 36);
+  margin-top: 0.3rem;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+  border: 0.2px solid black;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.course-title {
+  align-self: center;
+  margin: 0;
+}
+
+.course-video {
+  align-self: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.blur-background {
+  filter: blur(1px);
+  transition: filter 0.3s ease;
+}
+
+.learn-close-modal {
+  align-self: center;
+}
+
+/* ********************** Media queries ***************** */
+
+@media screen and (max-width: 800px) and (min-width: 600px) {
+  .header-info {
+    font-size: smaller;
+  }
+
+  .header-info button {
+    position: absolute;
+    top: 14px;
+    font-size: x-small;
+    text-align: center;
+  }
+
+  nav {
+    gap: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  nav input {
+    width: 200px;
+    padding: 0.3rem 0.3rem;
+  }
+
+  .notification-logo,
+  .cart,
+  .wishlist-logo {
+    display: none;
+  }
+
+  .profile-logo {
+    position: absolute;
+    right: 1rem;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    overflow-y: auto;
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header-info {
+    font-size: x-small;
+  }
+
+  .header-info button {
+    top: 8px;
+  }
+
+  nav {
+    justify-content: space-around;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: small;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  nav input {
+    width: 300px;
+  }
+
+  .notification-logo,
+  .cart,
+  .wishlist-logo {
+    display: none;
+  }
+
+  .content-wrapper {
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    max-width: 380px;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    overflow-y: auto;
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header-info {
+    display: none;
+  }
+}
