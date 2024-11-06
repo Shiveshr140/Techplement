@@ -7,7 +7,6 @@ const courseDetail = [
       "Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux, Tailwind, advanced patterns",
     image: "reactjs.jpg",
     rating: 4,
-    price: "₹3999",
     videoSrc: "https://www.youtube.com/embed/gmp0istg5xo?si=xcvjOctZ3cP0K84d",
   },
   {
@@ -16,16 +15,14 @@ const courseDetail = [
       "Master JavaScript in 5 Hours: Flow Control, Functions, DOM, Asynchronous, OOP, and Practical Projects.",
     image: "javascript.jpg",
     rating: 5,
-    price: "₹3500",
     videoSrc: "https://www.youtube.com/embed/iRL0FqPzsnk?si=nmVTXIzNGygvrr5k",
   },
   {
     title: "NodeJs: Advance Concept",
     description:
       "Get advanced with Node.Js! Learn caching with Redis, speed up through clustering, and add image upload with S3 and Node!",
-    image: "https://www.enprowess.com/images/hire%20Node.svg",
+    image: "javascript.jpg",
     rating: 3,
-    price: "₹1750",
     videoSrc: "https://www.youtube.com/embed/SfWPqr04srM?si=ks0OGYRWix9Wldta",
   },
   {
@@ -34,7 +31,6 @@ const courseDetail = [
       "Become a UX/UI Designer! Master Mobile and Web Design, User Interface + User Experience (UI/UX Design), HTML, and CSS",
     image: "html_css.jpg",
     rating: 2,
-    price: "₹1999",
     videoSrc: "https://www.youtube.com/embed/g7xkVEWrX8E?si=lLRq2HNRvZSj5kjd",
   },
   {
@@ -43,7 +39,6 @@ const courseDetail = [
       "DSA for Cracking the Coding Interview. Animated Examples for Faster Learning and Deeper Understanding.",
     image: "dsa.jpg",
     rating: 5,
-    price: "₹560",
     videoSrc: "https://www.youtube.com/embed/1SBAdKZhrUg?si=K6BWcQn0l0MQU-ll",
   },
   {
@@ -52,7 +47,6 @@ const courseDetail = [
       "Master MongoDB Development for Web &amp; Mobile Apps. CRUD Operations, Indexes, Aggregation Framework - All about MongoDB!",
     image: "mongodb.jpg",
     rating: 5,
-    price: "₹700",
     videoSrc: "https://www.youtube.com/embed/-bt_y4Loofg?si=g4mNmk_sEU0Dp53f",
   },
   {
@@ -61,7 +55,6 @@ const courseDetail = [
       "Learn best practices for testing your apps with Jest / Vitest and React Testing Library. All code written via TDD!",
     image: "react-testing.jpg",
     rating: 5,
-    price: "₹350",
     videoSrc: "https://www.youtube.com/embed/n_sS-GAgZ98?si=kiEWXIFok5ey1L7e",
   },
   {
@@ -70,7 +63,6 @@ const courseDetail = [
       "Learn Python like a Professional Start from the basics and go all the way to creating your own applications and games.",
     image: "python.jpg",
     rating: 4,
-    price: "₹2000",
     videoSrc: "https://www.youtube.com/embed/15cMbvhOj7Q?si=5bJSHcx4b0JNv_6J",
   },
   {
@@ -79,7 +71,6 @@ const courseDetail = [
       "Build professional REST APIs with Python, Flask, Docker, Flask-Smorest, and Flask-SQLAlchemy",
     image: "python-flask.jpg",
     rating: 4,
-    price: "₹800",
     videoSrc: "https://www.youtube.com/embed/AgVqsmz-ZW4?si=SG-0rLtj7slAwsPh",
   },
 ];
@@ -89,18 +80,17 @@ const courseDetail = [
 const generateCourses = (num) => {
   const courses = [];
   for (let i = 0; i < num; i++) {
-    const course = courseDetail[i];
+    const randomNum = Math.floor(Math.random() * courseDetail.length);
     courses.push({
       id: i + 1,
-      title: course.title,
-      description: course.description,
-      price: course.price,
-      image: course.image.startsWith("https:")
-        ? `${course.image}`
-        : `./style/assets/${course.image}`,
+      title: courseDetail[randomNum].title,
+      description: courseDetail[randomNum].description,
+      price: faker.commerce.price(),
+      //   category: faker.commerce.department(),
+      image: `./style/assets/${courseDetail[randomNum].image}`,
       instructor: faker.name.findName(),
-      rating: course.rating,
-      src: course.videoSrc,
+      rating: Math.floor(Math.random() * 5),
+      src: courseDetail[randomNum].videoSrc,
     });
   }
   return courses;
@@ -115,12 +105,9 @@ function returnMain() {
   let courseHTML = "";
   for (let course of courses) {
     courseHTML += `
-      <div class="main-div" data-price=${course.price} data-rating=${course.rating} > 
+      <div class="main-div"> 
         <div class="poster">
-          <div class="poster-image-price">
-            <img class="poster-image" src=${course.image} alt="course image" />
-            <p class="course-price">${course.price}</p>
-          </div>
+          <img class="poster-image" src=${course.image} alt="course image" />
           <div class="poster-info">
             <h3>${course.title}</h3>
             <p class="poster-instructor"> -by ${course.instructor}</p>
