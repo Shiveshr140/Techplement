@@ -3,6 +3,7 @@
 const courseDetail = [
   {
     title: "The Ultimate React Course",
+    instructor: "Mr. Miles Olson",
     description:
       "Master modern React from beginner to advanced! Next.js, Context API, React Query, Redux, Tailwind, advanced patterns",
     image: "reactjs.jpg",
@@ -12,6 +13,7 @@ const courseDetail = [
   },
   {
     title: "JavaScript Mastery",
+    instructor: "Alexandrine Stracke",
     description:
       "Master JavaScript in 5 Hours: Flow Control, Functions, DOM, Asynchronous, OOP, and Practical Projects.",
     image: "javascript.jpg",
@@ -21,6 +23,7 @@ const courseDetail = [
   },
   {
     title: "NodeJs: Advance Concept",
+    instructor: "Rafael Wiegand",
     description:
       "Get advanced with Node.Js! Learn caching with Redis, speed up through clustering, and add image upload with S3 and Node!",
     image: "https://www.enprowess.com/images/hire%20Node.svg",
@@ -30,6 +33,7 @@ const courseDetail = [
   },
   {
     title: "Web Design from Zero to Advance",
+    instructor: "Miss Eudora Paucek",
     description:
       "Become a UX/UI Designer! Master Mobile and Web Design, User Interface + User Experience (UI/UX Design), HTML, and CSS",
     image: "html_css.jpg",
@@ -39,6 +43,7 @@ const courseDetail = [
   },
   {
     title: "Data Structure & Algorthim",
+    instructor: "Eric Hilll",
     description:
       "DSA for Cracking the Coding Interview. Animated Examples for Faster Learning and Deeper Understanding.",
     image: "dsa.jpg",
@@ -48,6 +53,7 @@ const courseDetail = [
   },
   {
     title: "MongoDB - The Complete Developer's Guide",
+    instructor: "Sigurd Fay",
     description:
       "Master MongoDB Development for Web &amp; Mobile Apps. CRUD Operations, Indexes, Aggregation Framework - All about MongoDB!",
     image: "mongodb.jpg",
@@ -57,6 +63,7 @@ const courseDetail = [
   },
   {
     title: "React Testing Library with Jest / Vitest",
+    instructor: "Reid Ryan",
     description:
       "Learn best practices for testing your apps with Jest / Vitest and React Testing Library. All code written via TDD!",
     image: "react-testing.jpg",
@@ -66,6 +73,7 @@ const courseDetail = [
   },
   {
     title: "The Complete Python Bootcamp",
+    instructor: "Cyrus Kilback",
     description:
       "Learn Python like a Professional Start from the basics and go all the way to creating your own applications and games.",
     image: "python.jpg",
@@ -75,6 +83,7 @@ const courseDetail = [
   },
   {
     title: "REST APIs with Flask and Python",
+    instructor: "Vicky Smitham",
     description:
       "Build professional REST APIs with Python, Flask, Docker, Flask-Smorest, and Flask-SQLAlchemy",
     image: "python-flask.jpg",
@@ -98,7 +107,7 @@ const generateCourses = (num) => {
       image: course.image.startsWith("https:")
         ? `${course.image}`
         : `./style/assets/${course.image}`,
-      instructor: faker.name.findName(),
+      instructor: course.instructor,
       rating: course.rating,
       src: course.videoSrc,
     });
