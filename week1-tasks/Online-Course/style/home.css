@@ -2,27 +2,25 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
 }
 
-body {
+.body-home {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   height: 100vh;
-  /* overflow: hidden; */
+  font-family: "Poppins", sans-serif;
 }
 
 /* ****************** Header Styling ************************************** */
-
-/* .header {
-  position: fixed;
-} */
 
 .header-info {
   position: relative;
   background-color: #5022c3;
   text-align: center;
-  padding: 0.1rem 0.1rem;
+  padding: 1rem 1rem;
 }
 
 .header-info-hidden {
@@ -35,36 +33,59 @@ body {
 
 .header-info p a {
   color: inherit;
+  font-size: 0.85em;
 }
 
 .header-info p a:hover {
-  color: rgb(229, 226, 226);
+  color: rgb(190, 184, 184);
 }
 
 .header-info button {
   position: absolute;
-  top: 15px;
-  right: 0.5rem;
+  top: 13px;
+  right: 1rem;
+  font-size: 20px;
+  color: #f7f7f7;
   cursor: pointer;
+  border: none;
+  background-color: #5022c3;
+  transition: background-color 0.3s ease-in;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  padding-bottom: 2px;
+  border-radius: 40%;
+}
+
+.header-info button:hover {
+  background-color: rgb(26, 17, 17);
 }
 
 nav {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  justify-content: space-between;
+  padding: 1rem 3rem 1rem 3rem;
   box-shadow: 1px 1px;
 }
 
-.nav-logo-cat {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+.logo-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-nav input {
-  width: 400px;
+.logo-link:hover {
+  color: #5022c3;
+}
+
+.nav-logo-cat-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search {
+  width: 500px;
   padding: 0.3rem 0.3rem;
   outline: none;
   border: 1.1px solid black;
@@ -73,24 +94,30 @@ nav input {
   font-size: medium;
 }
 
-nav input:focus {
+.search:focus {
   border: 1.5px solid #5022c3 !important;
 }
 
-nav input::placeholder {
+.search::placeholder {
   color: grey;
   opacity: 0.8;
   font-weight: 200;
   font-size: small;
 }
 
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .dropdown select {
   background-color: transparent;
   outline: none; /* Remove the outline */
   border: none; /* Remove the default border */
-  padding: 0.3rem; /* Add padding if necessary */
+  padding: 0.3rem;
   border-radius: 10px; /* Optional: to match your design */
-  /* font-size: 0.8em; */
+  cursor: pointer;
 }
 
 .cart {
@@ -110,19 +137,21 @@ nav input::placeholder {
 
 .cart-list {
   display: none;
+  /* padding-bottom: 1.5rem; */
 }
 
 .cart-display {
   display: block;
   position: absolute; /* Position it below the cart title */
-  top: 35px;
+  top: 50px;
+  right: -5px;
   background-color: white; /* Background for dropdown */
   border: 1px solid #ccc; /* Optional: border around dropdown */
   border-radius: 5px; /* Optional: rounded corners */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for dropdown */
   z-index: 1000;
   width: 200px;
-  padding-left: 0px;
+  padding: 0px;
   list-style: none;
 }
 
@@ -130,22 +159,94 @@ nav input::placeholder {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.3rem 0.4rem 0.5rem 0.3rem;
+  margin: 0px;
+  padding: 0.8rem 0 0.2rem 0.3rem;
+  transition: background-color 0.5 ease-in-out;
 }
 
 .cart-display li:not(:last-child) {
-  border-bottom: 0.05px solid black;
-  padding: 0.3rem 0.4rem 0.5rem 0.3rem;
+  border-bottom: 0.05px solid grey;
+}
+
+.cart-display li:hover {
+  background-color: whitesmoke;
+}
+
+.cart-display li img {
+  width: 40px;
+  aspect-ratio: 1/0.8;
+}
+
+.cart-logo {
+  width: 35px;
+}
+
+.wishlist,
+.notification,
+.profile {
+  position: relative;
+  cursor: pointer;
 }
 
 .wishlist-logo {
   align-self: center;
   width: 30px;
+  cursor: pointer;
+}
+
+.wishlist-display {
+  padding: 0.9rem 0.8rem;
+}
+
+.wishlist-display p {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 0.6rem;
+  color: rgb(157, 155, 155);
+}
+
+.wishlist-display h3 {
+  text-align: center;
+  color: #5022c3;
+  font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .notification-logo {
   align-self: center;
   width: 30px;
+}
+
+.notification-display {
+  padding: 0.9rem 0.3rem 0.5rem 0.5rem;
+  width: 320px;
+}
+
+.notification-display div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.notification-display div h3 {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.notification-display div p {
+  color: #5022c3;
+  cursor: pointer;
+}
+
+.notification-display div p:hover {
+  color: #4502f0;
+  text-decoration: underline;
+}
+
+.notification-display p {
+  color: rgb(157, 155, 155);
+  text-align: center;
 }
 
 .profile-logo {
@@ -154,8 +255,51 @@ nav input::placeholder {
   aspect-ratio: 1/1;
 }
 
-img {
-  width: 30px;
+.profile-display {
+  width: 250px;
+  padding: 0.7rem 0.3rem 0.5rem 0.6rem;
+}
+
+.profile-display-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-left: -0.6rem; /* Match padding on .profile-display */
+  margin-right: -0.3rem; /* Match padding on .profile-display */
+  padding-left: 0.6rem;
+  padding-right: 0.3rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.5px solid rgb(183, 180, 180);
+}
+
+.profile-display-header img {
+  width: 60px;
+  aspect-ratio: 1/1;
+}
+
+.profile-display-header p {
+  font-size: 14px;
+  color: rgb(156, 154, 154);
+}
+
+.profile-display-body1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 14px;
+  margin: 0.8rem -0.3rem 0rem -0.6rem;
+  padding: 0rem 0.3rem 0.8rem 0.6rem;
+  border-bottom: 0.5px solid rgb(183, 180, 180);
+}
+
+.profile-display-body1 p:hover {
+  color: #5022c3;
+  cursor: pointer;
+}
+
+.profile-display-body2 {
+  border-bottom: none;
 }
 
 /* ************** Main ************************** */
@@ -173,7 +317,7 @@ img {
 .main-div {
   margin-bottom: 1rem;
   cursor: pointer;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-in;
 }
 
 .main-div:hover {
@@ -205,18 +349,21 @@ img {
   /* white-space: nowrap; Prevents the text from wrapping onto the next line */
   overflow: hidden; /* Hides any overflowed content */
   text-overflow: ellipsis; /* Adds an ellipsis (…) if the text is too long to fit */
+  font-size: 1.1em;
 }
 
 .poster-instructor {
   color: rgb(70, 70, 70);
   margin-top: 0px;
   margin-bottom: 0px;
+  font-size: 1em;
   opacity: 0.8;
 }
 
 .poster-description {
   color: rgb(39, 36, 36);
   margin-top: 0.3rem;
+  font-size: 1em;
 }
 
 .content {
@@ -227,12 +374,14 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: whitesmoke;
   border: 0.2px solid black;
+  border-radius: 10px;
   z-index: 1000;
   padding: 1rem;
   backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 60%;
 }
 
 .hidden {
@@ -246,110 +395,402 @@ img {
 
 .course-video {
   align-self: center;
-  width: 70%;
+  width: 75%;
+  aspect-ratio: 1/0.4;
   margin: 0 auto;
+  padding: 0;
+  border: 1px solid black;
+}
+
+.course-description {
+  font-size: 14px;
+  color: rgb(122, 118, 118);
+  text-align: center;
 }
 
 .blur-background {
-  filter: blur(1px);
+  filter: blur(0.8px);
+  background-color: transparent;
   transition: filter 0.3s ease;
 }
 
-.learn-close-modal {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Just below modal */
+}
+
+.course-close-modal {
+  margin-top: 0.8rem;
   align-self: center;
+}
+
+.learn-course {
+  padding: 0.4rem 1rem 0.5rem 1rem;
+  color: whitesmoke;
+  background-color: #602ce5;
+  border: none;
+  border-radius: 6px;
+}
+
+.learn-course a {
+  color: inherit;
+  /* font-weight: 500; */
+  font-size: 15px;
+}
+
+.learn-course:hover {
+  background-color: #5622db;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  background-color: whitesmoke;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.7s ease-in-out;
+  padding: 0.3rem 0.4rem;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.close-modal:hover {
+  background-color: rgb(215, 229, 234);
+}
+
+/* ********************* footer *************************** */
+footer {
+  background-color: rgb(24, 23, 23);
+  padding: 0.7rem 0rem;
+}
+
+footer p {
+  text-align: center;
+  color: whitesmoke;
+  font-size: 14px;
 }
 
 /* ********************** Media queries ***************** */
 
-@media screen and (max-width: 800px) and (min-width: 600px) {
+@media screen and (max-width: 1080px) and (min-width: 800px) {
+  nav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-logo-cat-input {
+    gap: 0.7rem;
+  }
+
+  .search {
+    width: 300px;
+  }
+
+  .nav-wrapper {
+    gap: 0.7rem;
+  }
+
+  .content-wrapper {
+    max-width: 900px;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .poster {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .poster-image {
+    width: 90%;
+  }
+
+  .poster-info h3 {
+    font-size: 1em;
+  }
+
+  .poster-instructor {
+    font-size: 0.8em;
+  }
+
+  .poster-description {
+    font-size: 0.8em;
+  }
+  .content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 700px) {
   .header-info {
-    font-size: smaller;
+    font-size: small;
   }
 
   .header-info button {
-    position: absolute;
-    top: 14px;
-    font-size: x-small;
-    text-align: center;
+    top: 11px;
   }
 
   nav {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .nav-logo-cat-input {
+    gap: 0.4rem;
+  }
+
+  .search {
+    width: 250px;
+  }
+
+  .nav-wrapper {
     gap: 0.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 
-  nav input {
-    width: 200px;
-    padding: 0.3rem 0.3rem;
-  }
-
-  .notification-logo,
-  .cart,
+  .profile-logo,
+  .cart-logo,
   .wishlist-logo {
-    display: none;
+    width: 30px;
   }
 
-  .profile-logo {
-    position: absolute;
-    right: 1rem;
+  .notification-logo {
+    width: 25px;
+  }
+
+  .content-wrapper {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .poster {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .poster-image {
+    width: 90%;
+  }
+
+  .poster-info h3 {
+    font-size: 1em;
+  }
+
+  .poster-instructor,
+  .poster-description {
+    font-size: 0.8em;
+  }
+
+  .content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 615px) {
+  .header-info {
+    font-size: small;
+  }
+
+  .header-info button {
+    top: 11px;
+  }
+
+  nav {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .nav-logo-cat-input {
+    gap: 0.3rem;
+  }
+
+  .nav-logo-cat-input h1 {
+    font-size: 1.35em;
+  }
+
+  .search {
+    width: 220px;
+  }
+
+  .nav-wrapper {
+    gap: 0.3rem;
+  }
+
+  .profile-logo,
+  .cart-logo,
+  .wishlist-logo {
+    width: 27px;
+  }
+
+  .notification-logo {
+    width: 23px;
+  }
+
+  .content-wrapper {
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+  }
+
+  .poster {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .poster-image {
+    width: 90%;
+  }
+
+  .poster-info h3 {
+    font-size: 1em;
+  }
+
+  .poster-instructor,
+  .poster-description {
+    font-size: 0.8em;
+  }
+
+  .content {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .header-info {
+    font-size: x-small;
+  }
+
+  .header-info button {
+    top: 11px;
+  }
+
+  nav {
+    padding-left: 0.3rem;
+    padding-right: 0.4rem;
+  }
+
+  .nav-logo-cat-input {
+    gap: 0.2rem;
+  }
+
+  .nav-logo-cat-input h1 {
+    font-size: 1.2em;
+  }
+
+  .dropdown select {
+    background-color: transparent;
+    outline: none; /* Remove the outline */
+    border: none; /* Remove the default border */
+    border-radius: 10px; /* Optional: to match your design */
+    cursor: pointer;
+    font-size: 0.8em;
+  }
+
+  .search {
+    width: 200px;
+  }
+
+  .nav-wrapper {
+    gap: 0.2rem;
+  }
+
+  .profile-logo,
+  .cart-logo,
+  .wishlist-logo {
+    width: 24px;
+  }
+
+  .notification-logo {
+    width: 21px;
   }
 
   .content-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1rem;
-    max-width: 600px;
+    max-width: 500px;
     margin: 1rem auto;
     padding: 0.5rem 1rem;
-    overflow-y: auto;
-    font-size: small;
+  }
+
+  .poster {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .poster-image {
+    width: 90%;
+  }
+
+  .poster-info h3 {
+    font-size: 1em;
+  }
+
+  .poster-instructor,
+  .poster-description {
+    font-size: 0.8em;
+  }
+
+  .content {
+    width: 90%;
+  }
+
+  .course-video {
+    width: 85%;
+    aspect-ratio: 1/0.5;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .header-info {
-    font-size: x-small;
-  }
-
-  .header-info button {
-    top: 8px;
-  }
-
-  nav {
-    justify-content: space-around;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-size: small;
-  }
-
+@media screen and (max-width: 550px) {
   .dropdown {
     display: none;
   }
 
-  nav input {
-    width: 300px;
+  .search {
+    width: 180px;
+    padding: 0.3rem 0.3rem;
   }
 
-  .notification-logo,
-  .cart,
-  .wishlist-logo {
-    display: none;
+  nav {
+    padding-left: 0.4rem;
+    padding-right: 0.7rem;
   }
-
-  .content-wrapper {
-    grid-template-columns: 1fr;
-    column-gap: 1rem;
-    max-width: 380px;
-    margin: 1rem auto;
-    padding: 0.5rem 1rem;
-    overflow-y: auto;
-    font-size: smaller;
+  .nav-logo-cat-input {
+    gap: 1.2rem;
   }
 }
 
 @media screen and (max-width: 450px) {
   .header-info {
     display: none;
+  }
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    max-width: 360px;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+  }
+
+  footer {
+    background-color: rgb(24, 23, 23);
+    padding: 0.7rem 0rem;
+  }
+
+  footer p {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 12px;
   }
 }
