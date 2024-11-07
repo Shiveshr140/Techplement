@@ -81,6 +81,7 @@ nav {
 
 .logo-link:hover {
   color: #5022c3;
+  text-shadow: 0 0 6px rgba(80, 34, 195, 0.3), 0 0 12px rgba(80, 34, 195, 0.3);
 }
 
 .nav-logo-cat-input {
@@ -497,7 +498,7 @@ nav {
   border-radius: 6px;
 }
 
-.course-price:hover {
+.course-price-button:hover {
   background-color: transparent;
 }
 
