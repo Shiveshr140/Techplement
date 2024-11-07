@@ -227,7 +227,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//************************************************  show hide profile
+//************************************************  Show/hide profile
 
 const profile = document.querySelector(".profile");
 const profileDiv = document.querySelector(".profile div");
@@ -249,8 +249,8 @@ profile.addEventListener("mouseleave", () => {
 profile.addEventListener("click", (e) => {
   e.stopPropagation();
   isProfileOpen = !isProfileOpen;
-  profileDiv.classList.toggle("cart-display", isWishlistOpen);
-  profileDiv.classList.toggle("hidden", !isWishlistOpen);
+  profileDiv.classList.toggle("cart-display", isProfileOpen);
+  profileDiv.classList.toggle("hidden", !isProfileOpen);
 });
 
 document.addEventListener("click", (e) => {

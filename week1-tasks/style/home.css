@@ -81,6 +81,7 @@ nav {
 
 .logo-link:hover {
   color: #5022c3;
+  text-shadow: 0 0 6px rgba(80, 34, 195, 0.3), 0 0 12px rgba(80, 34, 195, 0.3);
 }
 
 .nav-logo-cat-input {
@@ -497,7 +498,7 @@ nav {
   border-radius: 6px;
 }
 
-.course-price:hover {
+.course-price-button:hover {
   background-color: transparent;
 }
 
@@ -579,6 +580,9 @@ footer p {
   }
   .content {
     width: 70%;
+  }
+  .hidden {
+    display: none;
   }
 }
 
@@ -806,6 +810,24 @@ footer p {
 }
 
 @media screen and (max-width: 550px) {
+  .header-info {
+    position: relative;
+    font-size: xx-small;
+    text-align: start;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+  }
+
+  .header-info p a {
+    color: inherit;
+    font-size: 1em;
+  }
+
+  .header-info button {
+    top: 5px;
+    right: 0.5rem;
+    font-size: 12px;
+  }
+
   .dropdown {
     display: none;
   }
@@ -826,15 +848,53 @@ footer p {
 
 @media screen and (max-width: 450px) {
   .header-info {
-    display: none;
+    position: relative;
+    font-size: xx-small;
+    text-align: start;
+    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
   }
+
+  .header-info p a {
+    display: flex;
+    justify-content: center;
+    color: inherit;
+    font-size: 1em;
+  }
+
+  .header-info button {
+    top: 7px;
+    right: 0.5rem;
+    font-size: 15px;
+  }
+
+  .learnify {
+    font: bold;
+  }
+
+  .nav-logo-cat-input {
+    gap: 0.4rem;
+  }
+
+  .search {
+    width: 165px;
+    padding: 0.3rem 0.3rem;
+  }
+
   .content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 1rem;
-    max-width: 360px;
+    max-width: 330px;
     margin: 1rem auto;
     padding: 0.5rem 1rem;
+  }
+
+  .poster-info {
+    margin-top: 0.4rem;
+  }
+
+  .course-title {
+    font-size: 0.8em;
   }
 
   footer {

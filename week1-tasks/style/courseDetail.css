@@ -192,6 +192,11 @@
   padding: 0.7rem 0.3rem;
 }
 
+.input:focus {
+  outline: none;
+  border: 0.2px solid #0056d2;
+}
+
 .form-button {
   padding: 0.7rem 1.1rem;
   color: whitesmoke;
@@ -631,5 +636,8 @@
   .modal-card {
     width: 90%;
     height: 800px;
+  }
+  .card3-body p {
+    color: black;
   }
 }

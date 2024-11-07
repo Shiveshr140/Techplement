@@ -73,10 +73,10 @@ const enrollContent = `
       <input class="input name" id="name" placeholder="Enter your full name" required />
     </div>
     <div class="field">
-      <label class="label" for="email">Email</label>
+      <label class="label" for="email" type="email">Email</label>
       <input class="input email" id="email" placeholder="name@gmail.com" required />
     </div>
-    <div class="field">
+    <div class="field" type="password">
       <label class="label" for="password">Password</label>
       <input class="input password" id="password" placeholder="Create password" required />
     </div>
