@@ -11,7 +11,7 @@ function createNavContent() {
     </div>
     <nav>
       <div class="nav-logo-cat-input">
-        <h1><a class="logo-link" href="index.html"> Learnify </a></h1>
+        <h1><a class="logo-link learnify" href="index.html"> Learnify </a></h1>
         <div class="dropdown">
             <select>
                 <option value="" selected disabled>Choose a Category</option>
@@ -29,7 +29,7 @@ function createNavContent() {
           <div class="nav-wrapper">
            <div class="cart">
             <img class="cart-logo" src="./style/assets/logo-cart.png" alt="cart logo" />
-            <ul class="cart-list">
+            <ul class="cart-list hidden">
               <li>
                 <img src="./style/assets/angular js.jpg" alt="image" />
                 <p>Web design</p>
@@ -114,9 +114,6 @@ const headerInfo = document.querySelector(".header-info");
 
 const searchInput = document.querySelector("nav input");
 
-const cart = document.querySelector(".cart");
-const cartDisplay = document.querySelector(".cart ul");
-
 // Focus the search input as soon as the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   searchInput.focus();
@@ -127,62 +124,138 @@ headerButton.addEventListener("click", () => {
   headerInfo.classList.add("header-info-hidden");
 });
 
-// show/hide cart and background blur
-document.addEventListener("click", (e) => {
-  if (cart.contains(e.target)) {
-    cartDisplay.classList.toggle("cart-list");
-    cartDisplay.classList.toggle("cart-display");
-  }
+//********************************************  show/hide cart
+const cart = document.querySelector(".cart");
+const cartDisplay = document.querySelector(".cart ul");
 
-  if (!cart.contains(e.target)) {
-    cartDisplay.classList.add("cart-list");
+let isCartOpen = false;
+
+// Handle mouseover to show cart on hover
+cart.addEventListener("mouseover", () => {
+  cartDisplay.classList.add("cart-display");
+  cartDisplay.classList.remove("hidden");
+});
+
+// Handle mouseout to hide cart on mouse leave, only if it hasn't been clicked
+cart.addEventListener("mouseleave", () => {
+  if (!isCartOpen) {
+    cartDisplay.classList.add("hidden");
     cartDisplay.classList.remove("cart-display");
   }
 });
 
-// show/hide wishlist
+// Toggle cart display on button click
+cart.addEventListener("click", (e) => {
+  e.stopPropagation(); // Prevent the event from reaching the document listener
+  isCartOpen = !isCartOpen; // Toggle the open state
+  cartDisplay.classList.toggle("cart-display", isCartOpen);
+  cartDisplay.classList.toggle("hidden", !isCartOpen);
+});
+
+// Hide cart when clicking outside
+document.addEventListener("click", (e) => {
+  if (!cart.contains(e.target) && !cartDisplay.contains(e.target)) {
+    isCartOpen = false;
+    cartDisplay.classList.add("hidden");
+    cartDisplay.classList.remove("cart-display");
+  }
+});
+
+//********************************************* show/hide wishlist
 const wishlist = document.querySelector(".wishlist");
 const wishlistDiv = document.querySelector(".wishlist div");
 
-document.addEventListener("click", (e) => {
-  console.log(e.target);
-  if (wishlist.contains(e.target)) {
-    wishlistDiv.classList.toggle("hidden");
-    wishlistDiv.classList.toggle("cart-display");
+let isWishlistOpen = false;
+
+wishlist.addEventListener("mouseover", () => {
+  wishlistDiv.classList.add("cart-display");
+  wishlistDiv.classList.remove("hidden");
+});
+
+wishlist.addEventListener("mouseleave", () => {
+  if (!isWishlistOpen) {
+    wishlistDiv.classList.remove("cart-display");
+    wishlistDiv.classList.add("hidden");
   }
-  if (!wishlist.contains(e.target)) {
+});
+
+wishlist.addEventListener("click", (e) => {
+  e.stopPropagation();
+  isWishlistOpen = !isWishlistOpen;
+  wishlistDiv.classList.toggle("cart-display", isWishlistOpen);
+  wishlistDiv.classList.toggle("hidden", !isWishlistOpen);
+});
+
+document.addEventListener("click", (e) => {
+  if (!wishlist.contains(e.target) && !wishlistDiv.contains(e.target)) {
+    isWishlistOpen = false;
     wishlistDiv.classList.add("hidden");
     wishlistDiv.classList.remove("cart-display");
   }
 });
 
-// show hide notification
+//**************************************************  show hide notification
 const notification = document.querySelector(".notification");
 const notificationDiv = document.querySelector(".notification div");
 
-document.addEventListener("click", (e) => {
-  console.log(e.target);
-  if (notification.contains(e.target)) {
-    notificationDiv.classList.toggle("hidden");
-    notificationDiv.classList.toggle("cart-display");
+let isNotificationOpen = false;
+
+notification.addEventListener("mouseover", () => {
+  notificationDiv.classList.add("cart-display");
+  notificationDiv.classList.remove("hidden");
+});
+
+notification.addEventListener("mouseleave", () => {
+  if (!isNotificationOpen) {
+    notificationDiv.classList.remove("cart-display");
+    notificationDiv.classList.add("hidden");
   }
-  if (!notification.contains(e.target)) {
+});
+
+notification.addEventListener("click", (e) => {
+  e.stopPropagation();
+  isNotificationOpen = !isNotificationOpen;
+  notificationDiv.classList.toggle("cart-display", isNotificationOpen);
+  notificationDiv.classList.toggle("hidden", !isNotificationOpen);
+});
+
+document.addEventListener("click", (e) => {
+  if (!notification.contains(e.target) && !notificationDiv.contains(e.target)) {
+    isNotificationOpen = false;
     notificationDiv.classList.add("hidden");
     notificationDiv.classList.remove("cart-display");
   }
 });
 
-// show hide profile
+//************************************************  show hide profile
+
 const profile = document.querySelector(".profile");
 const profileDiv = document.querySelector(".profile div");
 
-document.addEventListener("click", (e) => {
-  console.log(e.target);
-  if (profile.contains(e.target)) {
-    profileDiv.classList.toggle("hidden");
-    profileDiv.classList.toggle("cart-display");
+let isProfileOpen = false;
+
+profile.addEventListener("mouseover", () => {
+  profileDiv.classList.add("cart-display");
+  profileDiv.classList.remove("hidden");
+});
+
+profile.addEventListener("mouseleave", () => {
+  if (!isProfileOpen) {
+    profileDiv.classList.remove("cart-display");
+    profileDiv.classList.add("hidden");
   }
-  if (!profile.contains(e.target)) {
+});
+
+profile.addEventListener("click", (e) => {
+  e.stopPropagation();
+  isProfileOpen = !isProfileOpen;
+  profileDiv.classList.toggle("cart-display", isWishlistOpen);
+  profileDiv.classList.toggle("hidden", !isWishlistOpen);
+});
+
+document.addEventListener("click", (e) => {
+  if (!profile.contains(e.target) && !profileDiv.contains(e.target)) {
+    isProfileOpen = false;
     profileDiv.classList.add("hidden");
     profileDiv.classList.remove("cart-display");
   }
