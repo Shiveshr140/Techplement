@@ -70,11 +70,10 @@
 
 .card1-body button {
   padding: 0.3rem 0.25rem;
-  background-color: rgb(237, 237, 110);
+  background-color: rgb(253, 222, 48);
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   box-shadow: 0.5px 0.5px 0.5px;
-  cursor: pointer;
 }
 
 .card1-body p a {
