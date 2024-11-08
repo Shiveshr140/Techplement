@@ -884,6 +884,9 @@ footer p {
     width: 250px;
   }
 
+  .notification-display {
+    width: 250px;
+  }
   .content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
