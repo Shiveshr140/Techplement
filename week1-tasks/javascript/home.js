@@ -93,7 +93,8 @@ const courseDetail = [
   },
 ];
 
-// const courseImg = ["fullstack.jpg", "", "nextjs.jpg"];
+// Select the search input field and content wrapper
+const contentWrapper = document.querySelector(".content-wrapper");
 
 const generateCourses = (num) => {
   const courses = [];
@@ -115,16 +116,14 @@ const generateCourses = (num) => {
   return courses;
 };
 
-// console.log("hi", generateCourses(10));
 const courses = generateCourses(9);
 
-const contentWrapper = document.querySelector(".content-wrapper");
-
-function returnMain() {
+// Function to generate course HTML based on a filtered list
+function displayCourses(coursesToShow) {
   let courseHTML = "";
-  for (let course of courses) {
+  for (let course of coursesToShow) {
     courseHTML += `
-      <div class="main-div" data-price=${course.price} data-rating=${course.rating} > 
+      <div class="main-div" data-price=${course.price} data-rating=${course.rating}> 
         <div class="poster">
           <div class="poster-image-price">
             <img class="poster-image" src=${course.image} alt="course image" />
@@ -136,11 +135,12 @@ function returnMain() {
             <p class="poster-description">${course.description}</p>
           </div>
         </div>
-        <input type="hidden" value= ${course.src} />
+        <input type="hidden" value=${course.src} />
       </div>
     `;
   }
   contentWrapper.innerHTML = courseHTML;
 }
 
-returnMain();
+// Initial display of all courses
+displayCourses(courses);

@@ -15,65 +15,75 @@ overlay.classList.add("overlay", "hidden");
 document.body.appendChild(modalContainer);
 document.body.appendChild(overlay);
 
-// Add event listeners to each main-div after they are generated
-document.querySelectorAll(".main-div").forEach((mainDiv) => {
-  mainDiv.addEventListener("click", () => {
-    const courseTitle = mainDiv.querySelector("h3").textContent;
-    const courseDescription = mainDiv.querySelector(
-      ".poster-description"
-    ).textContent;
-    const coursePrice = mainDiv.getAttribute("data-price");
-    const numRating = mainDiv.getAttribute("data-rating");
+// Function to add event listeners to each course element
+function attachCourseClickListeners() {
+  document.querySelectorAll(".main-div").forEach((mainDiv) => {
+    mainDiv.addEventListener("click", () => {
+      const courseTitle = mainDiv.querySelector("h3").textContent;
+      const courseDescription = mainDiv.querySelector(
+        ".poster-description"
+      ).textContent;
+      const coursePrice = mainDiv.getAttribute("data-price");
+      const numRating = mainDiv.getAttribute("data-rating");
+      const courseVideo = mainDiv.querySelector("input").value;
 
-    const courseVideo = mainDiv.querySelector("input").value;
-    // Display the modal content
-    modalContainer.innerHTML = `
-      <iframe
-        class="course-video"
-        src=${courseVideo}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-      <div class="title-rating"> 
-      <p class="course-title"><strong>${courseTitle}</strong></p>
-      <ul class="rating-list"> </ul>
-      </div>
-      <p class="course-description">${courseDescription}</p>
-      <div class="course-close-modal">
-        <button class="learn-course"><a href="./courseDetail.html">Learn more</a></button>
-        <button class="course-price-button">Price: ${coursePrice} only </button>
-        <button class="close-modal">&times;</button>
-      </div>
-    `;
+      // Display the modal content
+      modalContainer.innerHTML = `
+        <iframe
+          class="course-video"
+          src=${courseVideo}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="title-rating"> 
+          <p class="course-title"><strong>${courseTitle}</strong></p>
+          <ul class="rating-list"> </ul>
+        </div>
+        <p class="course-description">${courseDescription}</p>
+        <div class="course-close-modal">
+          <button class="learn-course"><a href="./courseDetail.html">Learn more</a></button>
+          <button class="course-price-button">Price: ${coursePrice} only </button>
+          <button class="close-modal">&times;</button>
+        </div>
+      `;
 
-    const ratingList = document.querySelector(".rating-list");
-    let ratingInnerHTML = ``;
-    for (let i = 1; i <= 5; i++) {
-      if (i <= numRating) {
-        ratingInnerHTML += `<li>
-            ${starRating("star")}
-        </li>`;
-      } else {
-        ratingInnerHTML += `<li>
-            ${starRating("starEmpty")}
-        </li>`;
+      const ratingList = document.querySelector(".rating-list");
+      let ratingInnerHTML = ``;
+      for (let i = 1; i <= 5; i++) {
+        if (i <= numRating) {
+          ratingInnerHTML += `<li>${starRating("star")}</li>`;
+        } else {
+          ratingInnerHTML += `<li>${starRating("starEmpty")}</li>`;
+        }
       }
-    }
-    ratingList.innerHTML = ratingInnerHTML;
+      ratingList.innerHTML = ratingInnerHTML;
 
-    modalContainer.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-    // contentWrapper.classList.add("blur-background");
+      modalContainer.classList.remove("hidden");
+      overlay.classList.remove("hidden");
 
-    // Add close button functionality
-    document.querySelector(".close-modal").addEventListener("click", () => {
-      modalContainer.classList.add("hidden");
-      contentWrapper.classList.remove("blur-background");
-      overlay.classList.add("hidden");
-      // clossing the video which you have playing
-      document.querySelector("iframe").src = "";
+      // Close button functionality
+      document.querySelector(".close-modal").addEventListener("click", () => {
+        modalContainer.classList.add("hidden");
+        overlay.classList.add("hidden");
+        document.querySelector("iframe").src = "";
+      });
     });
   });
+}
+
+// Initial display of all courses and attach click listeners
+displayCourses(courses);
+attachCourseClickListeners();
+
+// Event listener for the search input, filter/search logic
+searchInput.addEventListener("input", (e) => {
+  const query = e.target.value.toLowerCase();
+  const filteredCourses = courses.filter((course) =>
+    course.title.toLowerCase().includes(query)
+  );
+
+  displayCourses(filteredCourses);
+  attachCourseClickListeners(); // Reattach click listeners for the updated list
 });

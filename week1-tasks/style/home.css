@@ -880,6 +880,10 @@ footer p {
     padding: 0.3rem 0.3rem;
   }
 
+  .notification-display {
+    width: 250px;
+  }
+
   .content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
